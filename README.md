@@ -9,6 +9,8 @@ Installing the SwiperJS plugin can be done in one of three ways: The GPM (Grav P
 installation method lets you quickly install the plugin with a simple terminal command, 
 the manual method lets you do so via a zip file, and the admin method lets you do so via the Admin Plugin.
 
+> **NB:** Currently, only manual installation available. Maybe plugin will be added to GPM in the future, but not yet.
+
 ### GPM Installation (Preferred)
 
 To install the plugin via the [GPM](http://learn.getgrav.org/advanced/grav-gpm), 
@@ -35,10 +37,6 @@ You should now have all the plugin files under
 
 If you use the Admin Plugin, you can install the plugin directly 
 by browsing the `Plugins`-menu and clicking on the `Add` button.
-
-
-## !Note
-Currently, only manual installation available. Maybe plugin will be added to GPM in the future, but not yet.
 
 ## Configuration
 

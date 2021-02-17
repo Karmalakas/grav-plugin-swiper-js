@@ -1,0 +1,13 @@
+{% set slide_content %}
+    {% include 'partials/swiper-js/types/' ~ slide.type ~ '.html.twig' %}
+{% endset %}
+
+<div class="swiper-slide">
+    {% if options.zoom %}
+        <div class="swiper-zoom-container">
+            {{ slide_content }}
+        </div>
+    {% else %}
+        {{ slide_content }}
+    {% endif %}
+</div>

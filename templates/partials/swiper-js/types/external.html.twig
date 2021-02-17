@@ -1,0 +1,5 @@
+{% extends 'partials/swiper-js/types/default.html.twig' %}
+
+{% block slide %}
+    {% include 'partials/swiper-js/types/external/' ~ slide.external_data.type ~ '.html.twig' %}
+{% endblock %}

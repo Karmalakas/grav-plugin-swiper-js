@@ -1,0 +1,12 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    <h1>{{ page.title|e }}</h1>
+    <section>
+        {% set slides = page.header.swiper.slides ?? page.media.all %}
+        {{ swiper_js(slides, page.header.swiper.options)|raw }}
+    </section>
+    <section>
+        {{ page.content|raw }}
+    </section>
+{% endblock %}

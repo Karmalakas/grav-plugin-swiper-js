@@ -1,0 +1,9 @@
+{% extends 'partials/swiper-js/types/default.html.twig' %}
+
+{% block slide %}
+    <div class="swiper-video-container video-local" data-video-type="local" data-rand="{{ random() }}">
+        <div class="swiper-player">
+            {{ parent() }}
+        </div>
+    </div>
+{% endblock %}

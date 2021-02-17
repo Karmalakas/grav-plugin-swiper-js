@@ -1,0 +1,23 @@
+<div id="swiper-js-{{ id }}" class="swiper-container">
+    <div class="swiper-wrapper">
+        {% for slide in slides %}
+            {% include 'partials/swiper-js/slide.html.twig' %}
+        {% endfor %}
+    </div>
+
+    {% if options.pagination.el %}
+    <div class="swiper-pagination"></div>
+    {% endif %}
+
+    {% if options.navigation.prevEl %}
+    <div class="swiper-button-prev"></div>
+    {% endif %}
+
+    {% if options.navigation.nextEl %}
+    <div class="swiper-button-next"></div>
+    {% endif %}
+
+    {% if options.scrollbar.el %}
+    <div class="swiper-scrollbar"></div>
+    {% endif %}
+</div>

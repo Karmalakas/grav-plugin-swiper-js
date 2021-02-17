@@ -1,0 +1,172 @@
+title: Swiper
+extends@:
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      fields:
+        swiper:
+          type: tab
+          title: SwiperJS
+
+          fields:
+
+            items:
+              type: section
+              title: PLUGIN_SWIPER_JS.PAGE_ITEMS.LABEL
+              text: PLUGIN_SWIPER_JS.PAGE_ITEMS.DESCRIPTION
+              underline: true
+
+              fields:
+
+                header.swiper.slides:
+                  type: list
+                  label: PLUGIN_SWIPER_JS.PAGE_ITEMS.LABEL
+                  collapsed: true
+                  controls: both
+                  placement: position
+
+                  fields:
+
+                    .title:
+                      type: text
+                      label: PLUGIN_SWIPER_JS.PAGE_ITEMS.ITEM_TITLE
+
+                    .text:
+                      type: textarea
+                      label: PLUGIN_SWIPER_JS.PAGE_ITEMS.ITEM_TEXT
+
+                    .page_media:
+                      type: filepicker
+                      preview_images: true
+                      label: PLUGIN_SWIPER_JS.PAGE_ITEMS.ITEM_PAGE_MEDIA
+                      on_demand: true
+
+                    .text_overlay:
+                      type: toggle
+                      label: PLUGIN_SWIPER_JS.PAGE_ITEMS.ITEM_TEXT_OVERLAY.LABEL
+                      help: PLUGIN_SWIPER_JS.PAGE_ITEMS.ITEM_TEXT_OVERLAY.HELP
+                      highlight: 1
+                      default: 0
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    .external:
+                      type: text
+                      label: PLUGIN_SWIPER_JS.PAGE_ITEMS.ITEM_EXTERNAL.LABEL
+                      help: PLUGIN_SWIPER_JS.PAGE_ITEMS.ITEM_EXTERNAL.HELP
+
+            options:
+              type: section
+              title: PLUGIN_SWIPER_JS.PAGE_OPTIONS
+              underline: true
+
+              fields:
+
+                header.swiper.options.autoplay:
+                  type: toggle
+                  label: PLUGIN_SWIPER_JS.OPTIONS.AUTOPLAY
+                  highlight: 1
+                  config-default@: plugins.swiper-js.swiper.autoplay
+                  options:
+                    1: PLUGIN_ADMIN.ENABLED
+                    0: PLUGIN_ADMIN.DISABLED
+                  validate:
+                    type: bool
+
+                header.swiper.options.loop:
+                  type: toggle
+                  label: PLUGIN_SWIPER_JS.OPTIONS.LOOP
+                  highlight: 1
+                  config-default@: plugins.swiper-js.swiper.loop
+                  options:
+                    1: PLUGIN_ADMIN.ENABLED
+                    0: PLUGIN_ADMIN.DISABLED
+                  validate:
+                    type: bool
+
+                header.swiper.options.zoom:
+                  type: toggle
+                  label: PLUGIN_SWIPER_JS.OPTIONS.ZOOM
+                  highlight: 1
+                  config-default@: plugins.swiper-js.swiper.zoom
+                  options:
+                    1: PLUGIN_ADMIN.ENABLED
+                    0: PLUGIN_ADMIN.DISABLED
+                  validate:
+                    type: bool
+
+                header.swiper.options.navigation.nextEl:
+                  type: text
+                  label: PLUGIN_SWIPER_JS.OPTIONS.NAVIGATION.NEXT_EL
+                  config-default@: plugins.swiper-js.swiper.navigation.nextEl
+                  placeholder: .swiper-button-next
+                  help: PLUGIN_SWIPER_JS.OPTIONS.NAVIGATION.NEXT_EL_HELP
+
+                header.swiper.options.navigation.prevEl:
+                  type: text
+                  label: PLUGIN_SWIPER_JS.OPTIONS.NAVIGATION.PREV_EL
+                  config-default@: plugins.swiper-js.swiper.navigation.prevEl
+                  placeholder: .swiper-button-prev
+                  help: PLUGIN_SWIPER_JS.OPTIONS.NAVIGATION.PREV_EL_HELP
+
+                header.swiper.options.pagination.el:
+                  type: text
+                  label: PLUGIN_SWIPER_JS.OPTIONS.PAGINATION.EL
+                  config-default@: plugins.swiper-js.swiper.pagination.el
+                  placeholder: .swiper-pagination
+                  help: PLUGIN_SWIPER_JS.OPTIONS.PAGINATION.EL_HELP
+
+                header.swiper.options.scrollbar.el:
+                  type: text
+                  label: PLUGIN_SWIPER_JS.OPTIONS.SCROLLBAR.EL
+                  config-default@: plugins.swiper-js.swiper.scrollbar.el
+                  placeholder: .swiper-scrollbar
+                  help: PLUGIN_SWIPER_JS.OPTIONS.SCROLLBAR.EL_HELP
+
+                header.swiper.options.direction:
+                  type: toggle
+                  label: PLUGIN_SWIPER_JS.OPTIONS.DIRECTION.LABEL
+                  config-default@: plugins.swiper-js.swiper.direction
+                  options:
+                    vertical: PLUGIN_SWIPER_JS.OPTIONS.DIRECTION.VERTICAL
+                    horizontal: PLUGIN_SWIPER_JS.OPTIONS.DIRECTION.HORIZONTAL
+                  validate.pattern: /[vertical|horizontal]/
+
+                header.swiper.options.effect:
+                  type: select
+                  label: PLUGIN_SWIPER_JS.OPTIONS.EFFECT.LABEL
+                  config-default@: plugins.swiper-js.swiper.effect
+                  options:
+                    slide: PLUGIN_SWIPER_JS.OPTIONS.EFFECT.SLIDE
+                    fade: PLUGIN_SWIPER_JS.OPTIONS.EFFECT.FADE
+                    cube: PLUGIN_SWIPER_JS.OPTIONS.EFFECT.CUBE
+                    coverflow: PLUGIN_SWIPER_JS.OPTIONS.EFFECT.COVER_FLOW
+                    flip: PLUGIN_SWIPER_JS.OPTIONS.EFFECT.FLIP
+
+                header.swiper.options.centeredSlides:
+                  type: toggle
+                  label: PLUGIN_SWIPER_JS.OPTIONS.CENTERED_SLIDES
+                  highlight: 1
+                  config-default@: plugins.swiper-js.swiper.centeredSlides
+                  options:
+                    1: PLUGIN_ADMIN.ENABLED
+                    0: PLUGIN_ADMIN.DISABLED
+                  validate:
+                    type: bool
+
+                header.swiper.options.initialSlide:
+                  type: number
+                  label: PLUGIN_SWIPER_JS.OPTIONS.INITIAL_SLIDE
+                  config-default@: plugins.swiper-js.swiper.initialSlide
+
+                header.swiper.options.speed:
+                  type: number
+                  label: PLUGIN_SWIPER_JS.OPTIONS.SPEED.LABEL
+                  help: PLUGIN_SWIPER_JS.OPTIONS.SPEED.HELP
+                  config-default@: plugins.swiper-js.swiper.speed

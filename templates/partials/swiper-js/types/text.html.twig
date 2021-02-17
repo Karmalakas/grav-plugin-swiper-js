@@ -1,0 +1,8 @@
+{% extends 'partials/swiper-js/types/default.html.twig' %}
+
+{% block slide %}
+    <section class="swiper-text-container">
+        <h2>{{ slide.title|e }}</h2>
+        {{ slide.text|markdown|raw }}
+    </section>
+{% endblock %}

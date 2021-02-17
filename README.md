@@ -36,6 +36,10 @@ You should now have all the plugin files under
 If you use the Admin Plugin, you can install the plugin directly 
 by browsing the `Plugins`-menu and clicking on the `Add` button.
 
+
+## !Note
+Currently, only manual installation available. Maybe plugin will be added to GPM in the future, but not yet.
+
 ## Configuration
 
 Before configuring this plugin, you should copy the `user/plugins/swiper-js/swiper-js.yaml` 

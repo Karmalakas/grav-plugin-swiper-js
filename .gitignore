@@ -1,3 +1,5 @@
 /.idea/
 /node_modules/*
+!/node_modules/swiper/LICENSE
+!/node_modules/swiper/README.md
 !/node_modules/swiper/swiper*

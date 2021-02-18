@@ -1,4 +1,5 @@
 enabled: true
+built_in_swiper_assets: true
 built_in_css: true
 built_in_js: true
 

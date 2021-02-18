@@ -1,4 +1,8 @@
 .swiper-container {
+  * {
+    box-sizing: border-box;
+  }
+
   &.swiper-container-horizontal {
     height: auto;
     max-height: 75vh;
@@ -62,6 +66,11 @@
       position: relative;
       color: #fff;
 
+      h3 {
+        color: #fff;
+        margin: 0;
+      }
+
       .swiper-image-title-overlay,
       .swiper-image-text-overlay {
         position: absolute;
@@ -94,6 +103,16 @@
           }
         }
       }
+
+      @media only screen and (max-width: 576px) {
+        .swiper-image-title-overlay {
+          font-size: 7vw;
+        }
+
+        .swiper-image-text-overlay {
+          font-size: 5vw;
+        }
+      }
     }
 
     img,
@@ -101,6 +120,7 @@
       max-width: 100%;
       max-height: 100%;
       margin: auto;
+      display: block;
     }
   }
 }

@@ -34,6 +34,18 @@ form:
       validate:
         type: bool
 
+    built_in_swiper_assets:
+      type: toggle
+      label: PLUGIN_SWIPER_JS.USE_BUILT_IN_SWIPER_ASSETS.LABEL
+      help: PLUGIN_SWIPER_JS.USE_BUILT_IN_SWIPER_ASSETS.HELP
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
     built_in_css:
       type: toggle
       label: PLUGIN_SWIPER_JS.USE_BUILT_IN_CSS

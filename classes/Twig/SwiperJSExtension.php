@@ -97,7 +97,7 @@ class SwiperJSExtension extends \Twig_Extension
         }
 
         $id = $custom_id ?: Utils::generateRandomString(8);
-        $this->addAssets($id);
+        $this->addAssets($id, $options);
 
         $output = $this->twig->processTemplate(
             'partials/swiper-js/container.html.twig',
@@ -106,19 +106,6 @@ class SwiperJSExtension extends \Twig_Extension
                 'slides'  => $slidesResult,
                 'options' => $options,
             ]
-        );
-
-        if ($this->config->get('plugins.swiper-js.built_in_css')) {
-            $this->grav['assets']->addCss('plugin://swiper-js/assets/css/swiper-js.min.css');
-        }
-
-        if ($this->config->get('plugins.swiper-js.built_in_js')) {
-            $this->grav['assets']->addJs('plugin://swiper-js/assets/js/swiper-js.min.js');
-        }
-
-        $this->grav['assets']->addInlineJs(
-            sprintf('pluginSwiperJS().initSwiper("%s", %s);', $id, json_encode($options)),
-            ['group' => 'bottom', 'priority' => 35]
         );
 
         return htmlspecialchars_decode($output);
@@ -232,19 +219,34 @@ class SwiperJSExtension extends \Twig_Extension
      *
      * @return $this
      */
-    protected function addAssets(string $id): SwiperJSExtension
+    protected function addAssets(string $id, array $options): SwiperJSExtension
     {
-        $assets_path = 'plugins://swiper-js/node_modules/swiper/';
+        if ($this->config->get('plugins.swiper-js.built_in_swiper_assets')) {
+            $assets_path = 'plugins://swiper-js/node_modules/swiper/';
 
-        $assets = [
-            sprintf('%s%s', $assets_path, 'swiper-bundle.js'),
-            sprintf('%s%s', $assets_path, 'swiper-bundle.min.css'),
-        ];
+            $assets = [
+                sprintf('%s%s', $assets_path, 'swiper-bundle.js'),
+                sprintf('%s%s', $assets_path, 'swiper-bundle.min.css'),
+            ];
 
-        $this->grav['assets']->add($assets, ['priority' => 50]);
+            $this->grav['assets']->add($assets, ['priority' => 50]);
 
-        // saving assets in page meta to use in pageInitialized event hook
-        $this->grav['page']->addContentMeta('swiper_js_assets', $assets);
+            // saving assets in page meta to use in pageInitialized event hook
+            $this->grav['page']->addContentMeta('swiper_js_assets', $assets);
+        }
+
+        if ($this->config->get('plugins.swiper-js.built_in_css')) {
+            $this->grav['assets']->addCss('plugin://swiper-js/assets/css/swiper-js.min.css');
+        }
+
+        if ($this->config->get('plugins.swiper-js.built_in_js')) {
+            $this->grav['assets']->addJs('plugin://swiper-js/assets/js/swiper-js.min.js');
+        }
+
+        $this->grav['assets']->addInlineJs(
+            sprintf('pluginSwiperJS().initSwiper("%s", %s);', $id, json_encode($options)),
+            ['group' => 'bottom', 'priority' => 35]
+        );
 
         return $this;
     }

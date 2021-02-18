@@ -2,6 +2,9 @@ en:
   PLUGIN_SWIPER_JS:
     DEFAULTS: 'Default options'
     PAGE_OPTIONS: 'Page swiper options'
+    USE_BUILT_IN_SWIPER_ASSETS:
+      LABEL: 'Use Swiper CSS and JS'
+      HELP: 'May want to disable if your theme includes custom Swiper styles and Javascript or you plan to include your own'
     USE_BUILT_IN_CSS: 'Use built in CSS'
     USE_BUILT_IN_JS: 'Use built in JS'
 
@@ -96,6 +99,9 @@ lt:
   PLUGIN_SWIPER_JS:
     DEFAULTS: 'Nustatymai pagal nutylėjimą'
     PAGE_OPTIONS: 'Puslapio slankiklio nustatymai'
+    USE_BUILT_IN_SWIPER_ASSETS:
+      LABEL: 'Naudoti Swiper CSS ir JS'
+      HELP: 'Jei jūsų tema naudoja nestandartinius Swiper stilius ar JavaScript arba planuojate naudoti savo, galite išjungti standartinių failų įterpimą'
     USE_BUILT_IN_CSS: 'Naudoti įskiepio CSS'
     USE_BUILT_IN_JS: 'Naudoti įskiepio JS'
 

@@ -1,3 +1,6 @@
+.swiper-container * {
+  box-sizing: border-box;
+}
 .swiper-container.swiper-container-horizontal {
   height: auto;
   max-height: 75vh;
@@ -53,6 +56,10 @@
   position: relative;
   color: #fff;
 }
+.swiper-container .swiper-wrapper .swiper-slide .swiper-image-container h3 {
+  color: #fff;
+  margin: 0;
+}
 .swiper-container .swiper-wrapper .swiper-slide .swiper-image-container .swiper-image-title-overlay,
 .swiper-container .swiper-wrapper .swiper-slide .swiper-image-container .swiper-image-text-overlay {
   position: absolute;
@@ -81,11 +88,20 @@
 .swiper-container .swiper-wrapper .swiper-slide .swiper-image-container .swiper-image-text-overlay p:last-child {
   margin-bottom: 0;
 }
+@media only screen and (max-width: 576px) {
+  .swiper-container .swiper-wrapper .swiper-slide .swiper-image-container .swiper-image-title-overlay {
+    font-size: 7vw;
+  }
+  .swiper-container .swiper-wrapper .swiper-slide .swiper-image-container .swiper-image-text-overlay {
+    font-size: 5vw;
+  }
+}
 .swiper-container .swiper-wrapper .swiper-slide img,
 .swiper-container .swiper-wrapper .swiper-slide video {
   max-width: 100%;
   max-height: 100%;
   margin: auto;
+  display: block;
 }
 
 /*# sourceMappingURL=swiper-js.css.map */

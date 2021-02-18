@@ -10,6 +10,7 @@ form:
         swiper:
           type: tab
           title: SwiperJS
+          ordering@: content
 
           fields:
 

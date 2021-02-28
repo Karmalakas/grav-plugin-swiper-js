@@ -87,6 +87,11 @@ class SwiperJSPlugin extends Plugin
         }
 
         $header  = $page->header();
+
+        if (!isset($header['swiper'])) {
+            return;
+        }
+
         $options = $header['swiper']['options'] ?? [];
 
         $header->offsetSet('swiper.options.navigation.nextEl', $options['navigation']['nextEl'] ?? '');

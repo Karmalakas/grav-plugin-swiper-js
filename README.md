@@ -1,47 +1,32 @@
 # SwiperJS Plugin
 
-The **SwiperJS** Plugin is an extension for [Grav CMS](http://github.com/getgrav/grav),
-which implements a [SwiperJS](https://swiperjs.com/) touch slider.
+The **SwiperJS** Plugin is an extension for [Grav CMS](http://github.com/getgrav/grav), which implements a [Swiper](https://swiperjs.com/) touch slider.
 
-## Installation
+## Usage
 
-Installing the SwiperJS plugin can be done in one of three ways: The GPM (Grav Package Manager) 
-installation method lets you quickly install the plugin with a simple terminal command, 
-the manual method lets you do so via a zip file, and the admin method lets you do so via the Admin Plugin.
+Plugin adds _Swiper-js_ page template which holds custom _SwiperJS_ tab, where you can override some default settings.
 
-> **NB:** Currently, only manual installation available. Maybe plugin will be added to GPM in the future, but not yet.
+This template by default uses all page media items. Images and videos are rendered in a slider. To override uploaded media, you can add custom items in _SwiperJS_ tab on page. By using these items, you can also add Youtube videos.
 
-### GPM Installation (Preferred)
+You can easily add Swiper to any template by using Twig extension `swiper_js()`. Default usage is:
 
-To install the plugin via the [GPM](http://learn.getgrav.org/advanced/grav-gpm), 
-through your system's terminal (also called the command line), 
-navigate to the root of your Grav-installation, and enter:
+    {% set slides = page.header.swiper.slides ?? page.media.all %}
+    {{ swiper_js(slides, page.header.swiper.options)|raw }}
 
-    bin/gpm install swiper-js
+First argument is an array of slides, where each slide can be:
+- `ImageMedium` or `VideoMedium` objects. That's what page media gives by default
+- Array of:
+  - `title`
+  - `text`
+  - `page_media` - a string, provided by Filepicker (file name)
+  - `text_overlay` - boolean if Title and Text should be overlayed over image
+  - `external` - Currently only Youtube video link is processed
 
-This will install the SwiperJS plugin into your `/user/plugins`-directory within Grav. 
-Its files can be found under `/your/site/grav/user/plugins/swiper-js`.
-
-### Manual Installation
-
-To install the plugin manually, download the zip-version of this repository 
-and unzip it under `/your/site/grav/user/plugins`. Then rename the folder to `swiper-js`. 
-You can find these files on [GitHub](https://github.com/karmalakas/grav-plugin-swiper-js) 
-or via [GetGrav.org](http://getgrav.org/downloads/plugins#extras).
-
-You should now have all the plugin files under
-
-    /your/site/grav/user/plugins/swiper-js
-
-### Admin Plugin
-
-If you use the Admin Plugin, you can install the plugin directly 
-by browsing the `Plugins`-menu and clicking on the `Add` button.
+Second argument is an object, containing any options that Swiper accepts. Check [Swiper docs](https://swiperjs.com/swiper-api#parameters)
 
 ## Configuration
 
-Before configuring this plugin, you should copy the `user/plugins/swiper-js/swiper-js.yaml` 
-to `user/config/plugins/swiper-js.yaml` and only edit that copy.
+Before configuring this plugin, you should copy the `user/plugins/swiper-js/swiper-js.yaml` to `user/config/plugins/swiper-js.yaml` and only edit that copy.
 
 Here is the default configuration and an explanation of available options:
 
@@ -91,41 +76,35 @@ swiper:
     prevSlideMessage: PLUGIN_SWIPER_JS.A11Y.PREV_SLIDE
 ```
 
-Note that if you use the Admin Plugin, a file with your configuration 
-named swiper-js.yaml will be saved in the `user/config/plugins/`-folder once the configuration is saved in the Admin.
+Note that if you use the Admin Plugin, a file with your configuration named swiper-js.yaml will be saved in the `user/config/plugins/`-folder once the configuration is saved in the Admin.
 
-## Usage
+## Installation
 
-Plugin adds _Swiper-js_ page template which holds custom _SwiperJS_ tab, where you can override some default settings.
+Installing the SwiperJS plugin can be done in one of three ways: The GPM (Grav Package Manager) installation method lets you quickly install the plugin with a simple terminal command, the manual method lets you do so via a zip file, and the admin method lets you do so via the Admin Plugin.
 
-This template by default uses all page media items. Images and videos are rendered in a slider. 
-To override uploaded media, you can add custom items in _SwiperJS_ tab on page. 
-By using these items, you can also add Youtube videos.
+### GPM Installation (Preferred)
 
-You can easily add Swiper to any template by using Twig extension `swiper_js()`. Default usage is:
+To install the plugin via the [GPM](http://learn.getgrav.org/advanced/grav-gpm), through your system's terminal (also called the command line), navigate to the root of your Grav-installation, and enter:
 
-    {% set slides = page.header.swiper.slides ?? page.media.all %}
-    {{ swiper_js(slides, page.header.swiper.options)|raw }}
+    bin/gpm install swiper-js
 
-First argument is an array of slides, where each slide can be:
-- `ImageMedium` or `VideoMedium` objects. That's what page media gives by default
-- Array of:
-  - `title`
-  - `text`
-  - `page_media` - a string, provided by Filepicker (file name)
-  - `text_overlay` - boolean if Title and Text should be overlayed over image
-  - `external` - Currently only Youtube video link is processed
+This will install the SwiperJS plugin into your `/user/plugins`-directory within Grav. Its files can be found under `/your/site/grav/user/plugins/swiper-js`.
 
-Second argument is an object, containing any options that Swiper accepts. Check [Swiper docs](https://swiperjs.com/swiper-api#parameters)
+### Manual Installation
 
-## Credits
+To install the plugin manually, download the zip-version of this repository and unzip it under `/your/site/grav/user/plugins`. Then rename the folder to `swiper-js`. You can find these files on [GitHub](https://github.com/karmalakas/grav-plugin-swiper-js) or via [GetGrav.org](http://getgrav.org/downloads/plugins#extras).
 
-This is my first plugin and wouldn't be possible without the support of community (@ricardo118, @rhukster, @OleVik and others)
-Also got some inspiration just by studying other plugins (too many to list)
+You should now have all the plugin files under
+
+    /your/site/grav/user/plugins/swiper-js
+
+### Admin Plugin
+
+If you use the Admin Plugin, you can install the plugin directly by browsing the `Plugins`-menu and clicking on the `Add` button.
 
 ## Known issues
 
-- Swiping on Youtube videos doesn't work, so overlay is added. Overlay prevent video control
+- Swiping on Youtube videos doesn't work, so overlay is added. Overlay prevents video controls
 - If looping is enabled, sometimes Youtube videos appear only if slide is moved a bit (not always though)
 
 If you know how to fix these or make a workaround, please feel free to submit a PR
@@ -137,5 +116,11 @@ If you know how to fix these or make a workaround, please feel free to submit a 
 - [ ] Add more supported options to configure (especially for navigation, pagination and scrollbar)
 - [ ] Add shortcode support maybe (meanwhile check @OleVik's [plugin](https://github.com/OleVik/grav-plugin-swiper/))
 
-As for now plugin fits my needs, no timeline for any of the features. If you are missing something, 
-please submit an issue or create a PR.
+As for now plugin fits my needs, no timeline for any of the features. If you are missing something, please submit an issue or create a PR.
+
+## Credits
+
+Thanks goes to original [Swiper](https://github.com/nolimits4web/swiper) authors.
+
+Also, as this is my first plugin, it wouldn't be possible without the support of community (@ricardo118, @rhukster, @OleVik and others)  
+And also got some inspiration just by studying other plugins (too many to list)

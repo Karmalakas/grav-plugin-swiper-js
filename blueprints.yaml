@@ -6,10 +6,8 @@ description: SwiperJS implementation for Grav CMS
 icon: ellipsis-h
 author:
   name: Karmalakas
-  email: cronus.raven@gmail.com
 homepage: https://github.com/Karmalakas/grav-plugin-swiper-js
-demo: http://demo.yoursite.com
-keywords: grav, plugin, etc
+keywords: grav, plugin, photos, slider, swiper, swiperjs, carousel
 bugs: https://github.com/Karmalakas/grav-plugin-swiper-js/issues
 docs: https://github.com/Karmalakas/grav-plugin-swiper-js/blob/develop/README.md
 license: MIT

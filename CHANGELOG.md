@@ -1,3 +1,11 @@
+# v1.1.0
+##  22-06-2021
+
+1. [](#improved)
+    * Same behavior for local and YT videos - has initial overlay, which is   
+      removed on playback and added back on pause. Unable to swipe on playback,  
+      but accessible controls. On pause no controls, but able to swipe.
+
 # v1.0.1
 ##  28-02-2021
 

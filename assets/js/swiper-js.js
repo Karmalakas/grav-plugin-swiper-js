@@ -15,6 +15,14 @@
         initYTPLayers();
     }
 
+    function videoPaused(holder) {
+        holder.querySelector('.swiper-overlay-element').classList.add('swiper-overlay');
+    }
+
+    function videoStarted(holder) {
+        holder.querySelector('.swiper-overlay-element').classList.remove('swiper-overlay');
+    }
+
     function initYTPLayers() {
         let i, player, player_parent;
 
@@ -23,7 +31,15 @@
             player_parent = player.parentElement;
             let YT_player = self.getYoutubePlayer(player);
 
-            player_parent.querySelector('.swiper-overlay').addEventListener('click', function () {
+            YT_player.addEventListener('onStateChange', function(state) {
+                if (state.data === YT.PlayerState.PAUSED || state.data === YT.PlayerState.ENDED) {
+                    videoPaused(player_parent);
+                } else if (state.data === YT.PlayerState.PLAYING) {
+                    videoStarted(player_parent);
+                }
+            });
+
+            player_parent.querySelector('.swiper-overlay-element').addEventListener('click', function () {
                 if (YT_player.getPlayerState() !== YT.PlayerState.PLAYING) {
                     YT_player.play();
                 } else {
@@ -39,7 +55,7 @@
 
     self.initPlayers = function (wrapper) {
         const slides = wrapper.querySelectorAll('.swiper-slide');
-        let slide, index, player, yt_players = [];
+        let slide, index, player, player_parent, player_playing, yt_players = [];
 
         for (let i = 1; i <= slides.length; i++) {
             index = i - 1;
@@ -57,6 +73,26 @@
                 player = video_container.querySelector('video');
 
                 if (player) {
+                    player_parent = player.parentElement.parentElement;
+
+                    player.addEventListener('pause', function() {
+                        videoPaused(player_parent)
+                    });
+
+                    player.addEventListener('play', function() {
+                        videoStarted(player_parent)
+                    });
+
+                    player_parent.querySelector('.swiper-overlay-element').addEventListener('click', function () {
+                        player_playing = !!(player.currentTime > 0 && !player.paused && !player.ended && player.readyState > 2);
+
+                        if (!player_playing) {
+                            player.play();
+                        } else {
+                            player.pause();
+                        }
+                    });
+
                     players['r_' + video_container.getAttribute('data-rand')] = player;
                 }
             } else if (type === 'youtube') {
@@ -97,7 +133,6 @@
             videoId: id,
             playerVars: {
                 autoplay: false,
-                controls: 0,
                 modestbranding: true,
                 rel: 0
             }

@@ -1,3 +1,9 @@
+# v1.1.1
+##  04-01-2022
+
+1. [](#bugfix)
+   * Fix overlay switch when multiple same type videos are used.
+
 # v1.1.0
 ##  22-06-2021
 

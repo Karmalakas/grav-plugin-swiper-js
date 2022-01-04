@@ -24,11 +24,9 @@
     }
 
     function initYTPLayers() {
-        let i, player, player_parent;
-
-        for (i = 0; i < YTIframeAPI_players.length; i++) {
-            player = YTIframeAPI_players[i];
-            player_parent = player.parentElement;
+        for (let i = 0; i < YTIframeAPI_players.length; i++) {
+            let player = YTIframeAPI_players[i];
+            let player_parent = player.parentElement;
             let YT_player = self.getYoutubePlayer(player);
 
             YT_player.addEventListener('onStateChange', function(state) {
@@ -55,13 +53,10 @@
 
     self.initPlayers = function (wrapper) {
         const slides = wrapper.querySelectorAll('.swiper-slide');
-        let slide, index, player, player_parent, player_playing, yt_players = [];
+        let yt_players = [];
 
         for (let i = 1; i <= slides.length; i++) {
-            index = i - 1;
-            slide = slides[index];
-
-            const video_container = slide.querySelector('.swiper-video-container');
+            let video_container = slides[i - 1].querySelector('.swiper-video-container');
 
             if (!video_container) {
                 continue;
@@ -70,10 +65,10 @@
             const type = video_container.getAttribute('data-video-type');
 
             if (type === 'local') {
-                player = video_container.querySelector('video');
+                let player = video_container.querySelector('video');
 
                 if (player) {
-                    player_parent = player.parentElement.parentElement;
+                    let player_parent = player.parentElement.parentElement;
 
                     player.addEventListener('pause', function() {
                         videoPaused(player_parent)
@@ -84,7 +79,7 @@
                     });
 
                     player_parent.querySelector('.swiper-overlay-element').addEventListener('click', function () {
-                        player_playing = !!(player.currentTime > 0 && !player.paused && !player.ended && player.readyState > 2);
+                        let player_playing = !!(player.currentTime > 0 && !player.paused && !player.ended && player.readyState > 2);
 
                         if (!player_playing) {
                             player.play();

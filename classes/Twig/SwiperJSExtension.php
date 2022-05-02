@@ -90,7 +90,7 @@ class SwiperJSExtension extends \Twig_Extension
             return '';
         }
 
-        $options = array_merge($defaults['swiper'], $options);
+        $options = array_merge($defaults['swiper'], $options ?? []);
 
         if (!empty($options['a11y'])) {
             $options['a11y'] = $this->grav['language']->translate($options['a11y']);

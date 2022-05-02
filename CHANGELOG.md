@@ -1,3 +1,9 @@
+# v1.1.2
+##  02-05-2022
+
+1. [](#bugfix)
+   * Fix slide height CSS calculation on wide but short screens/windows
+
 # v1.1.1
 ##  04-01-2022
 

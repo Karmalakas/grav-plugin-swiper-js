@@ -1,10 +1,15 @@
+# v2.0.1
+## 22-11-2026
+
+1. [](#bugfix)
+   * Fix changelog syntax
+
 # v2.0.0
 ## 22-11-2026
 
-1[](#new)
+1. [](#new)
    * Change how data is saved on page update (compatible with Grav v2)
    * Mark plugin compatible only with Grav 2.0
-   * Bump up the version
 
 # v1.1.3
 ##  03-05-2022

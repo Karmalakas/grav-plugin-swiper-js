@@ -4,7 +4,6 @@ namespace Grav\Plugin;
 
 use Composer\Autoload\ClassLoader;
 use Grav\Common\Grav;
-use Grav\Common\Page\Interfaces\PageInterface;
 use Grav\Common\Plugin;
 use Grav\Plugin\SwiperJS\Twig\SwiperJSExtension;
 use RocketTheme\Toolbox\Event\Event;
@@ -47,6 +46,7 @@ class SwiperJSPlugin extends Plugin
             'onPluginsInitialized' => [
                 ['onPluginsInitialized', 0]
             ],
+            'onApiBeforePageUpdate' => ['onApiBeforePageUpdate', 0],
         ];
     }
 
@@ -55,22 +55,21 @@ class SwiperJSPlugin extends Plugin
      */
     public function onPluginsInitialized(): void
     {
-        if ($this->isAdmin()) {
-            $this->enable(
-                [
-                    'onAdminSave'         => ['onAdminSave', 0],
-                    'onGetPageTemplates'  => ['onGetPageTemplates', 0],
-                    'onGetPageBlueprints' => ['onGetPageBlueprints', 0],
-                ]
-            );
+        $this->enable(
+            [
+                'onGetPageTemplates' => ['onGetPageTemplates', 0],
+                'onGetPageBlueprints' => ['onGetPageBlueprints', 0],
+            ]
+        );
 
+        if ($this->isAdmin()) {
             return;
         }
 
         $this->enable(
             [
                 'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
-                'onTwigExtensions'    => ['onTwigExtensions', 0],
+                'onTwigExtensions' => ['onTwigExtensions', 0],
             ]
         );
     }
@@ -78,15 +77,9 @@ class SwiperJSPlugin extends Plugin
     /**
      * @param $event
      */
-    public function onAdminSave($event)
+    public function onApiBeforePageUpdate(Event $event)
     {
-        $page = $event['object'];
-
-        if (!$page instanceof PageInterface) {
-            return;
-        }
-
-        $header  = $page->header();
+        $header = $event['data']['header'] ?? [];
 
         if (!isset($header['swiper'])) {
             return;
@@ -94,10 +87,10 @@ class SwiperJSPlugin extends Plugin
 
         $options = $header['swiper']['options'] ?? [];
 
-        $header->offsetSet('swiper.options.navigation.nextEl', $options['navigation']['nextEl'] ?? '');
-        $header->offsetSet('swiper.options.navigation.prevEl', $options['navigation']['prevEl'] ?? '');
-        $header->offsetSet('swiper.options.pagination.el', $options['pagination']['el'] ?? '');
-        $header->offsetSet('swiper.options.scrollbar.el', $options['scrollbar']['el'] ?? '');
+        $options['navigation']['nextEl'] ??= '';
+        $options['navigation']['prevEl'] ??= '';
+        $options['pagination']['el'] ??= '';
+        $options['scrollbar']['el'] ??= '';
     }
 
     /**
